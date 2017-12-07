@@ -1,7 +1,14 @@
 import Vapor
+import Foundation
+
 
 extension Droplet {
     func setupRoutes() throws {
+        
+        get ("getdate") { req in
+            let currentDate = NSDate()
+            return currentDate.description
+        }
         get("hello") { req in
             var json = JSON()
             try json.set("hello", "world")
