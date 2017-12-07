@@ -6,8 +6,13 @@ extension Droplet {
     func setupRoutes() throws {
         
         get ("getdate") { req in
-            let currentDate = NSDate()
-            return currentDate.description
+           
+            let est = Locale(identifier: "US-GA")
+            let currentDateTime = Date().description(with: est )
+            
+            var json = JSON()
+            try json.set("currentDateTime", currentDateTime)
+            return currentDateTime
         }
         get("hello") { req in
             var json = JSON()
